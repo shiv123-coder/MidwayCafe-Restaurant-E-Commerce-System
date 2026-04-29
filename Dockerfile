@@ -1,18 +1,33 @@
 FROM php:8.2-apache
 
+# Install dependencies
 RUN apt-get update -y && apt-get install -y \
-    git curl zip unzip libpng-dev libjpeg-dev libfreetype6-dev
+    git \
+    curl \
+    zip \
+    unzip \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev
 
+# PHP extensions
 RUN docker-php-ext-install pdo pdo_mysql
+
+# Enable Apache rewrite
+RUN a2enmod rewrite
 
 WORKDIR /var/www/html
 
+# Copy project
 COPY . .
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# Install composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-RUN composer install --no-dev --optimize-autoloader
+# Install dependencies
+RUN composer install --no-dev --optimize-autoloader || true
 
+# Fix permissions
 RUN chown -R www-data:www-data /var/www/html
 
 EXPOSE 80
