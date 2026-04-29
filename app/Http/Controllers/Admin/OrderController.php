@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Cache;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\User;
-use Illuminate\Support\Facades\Cache;
 
 class OrderController extends Controller
 {
@@ -83,10 +82,10 @@ class OrderController extends Controller
 
         $products = $order->items;
         $total_price = $order->total_amount;
-        
+
         // Calculate base price without discounts/charges for display if needed
         $base_subtotal = $products->sum('subtotal');
-        
+
         $coupon_code = $order->coupon_id;
         $coupon_percentage = $coupon_code
             ? DB::table('coupons')->where('code', $coupon_code)->value('percentage')

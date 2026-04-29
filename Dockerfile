@@ -44,6 +44,7 @@ EXPOSE 80
 
 # 🚀 FULL START COMMAND (FINAL FIX)
 CMD php artisan config:clear && \
+    php artisan storage:link && \
     php artisan cache:clear && \
     php artisan storage:link && \
     php artisan migrate --force && \
