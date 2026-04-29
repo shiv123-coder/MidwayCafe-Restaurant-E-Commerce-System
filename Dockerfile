@@ -19,10 +19,16 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 # Enable Apache rewrite
 RUN a2enmod rewrite
 
+# 🔥 CRITICAL FIX: Allow .htaccess
+RUN echo "<Directory /var/www/html/public>\n\
+    AllowOverride All\n\
+    Require all granted\n\
+</Directory>" > /etc/apache2/conf-available/laravel.conf \
+    && a2enconf laravel
+
 # Set Laravel public folder
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 
 # Set working directory
 WORKDIR /var/www/html
@@ -42,11 +48,9 @@ RUN chown -R www-data:www-data storage bootstrap/cache
 # Expose port
 EXPOSE 80
 
-# 🚀 FULL START COMMAND (FINAL FIX)
+# 🚀 FINAL START
 CMD php artisan config:clear && \
-    php artisan storage:link && \
     php artisan cache:clear && \
-    php artisan storage:link && \
+    php artisan storage:link || true && \
     php artisan migrate --force && \
-    php artisan db:seed --force || true && \
     apache2-foreground
