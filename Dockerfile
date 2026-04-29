@@ -36,14 +36,16 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Set permissions (VERY IMPORTANT for Laravel)
+# Set permissions
 RUN chown -R www-data:www-data storage bootstrap/cache
 
 # Expose port
 EXPOSE 80
 
-# 🚀 START + MIGRATION AUTO RUN
+# 🚀 FULL START COMMAND (FINAL FIX)
 CMD php artisan config:clear && \
     php artisan cache:clear && \
+    php artisan storage:link && \
     php artisan migrate --force && \
+    php artisan db:seed --force || true && \
     apache2-foreground
