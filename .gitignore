@@ -1,24 +1,50 @@
+# Node
 /node_modules
+
+# Laravel public hot reload
 /public/hot
+
+# ✅ Allow public storage (IMPORTANT FOR IMAGES)
 /public/storage
-/storage/*.key
+!/public/storage/
+
+# Storage (ignore everything except public uploads)
+/storage/*
+!/storage/app/public/
+
+# Vendor
 /vendor
+
+# Environment files
 .env
 .env.*
 !.env.example
 .env.backup
 .env.local
 .env.production
+
+# Logs
 *.log
 storage/logs/*.log
+
+# PHPUnit
 .phpunit.result.cache
+/.phpunit.cache
+
+# Docker / Homestead
 docker-compose.override.yml
 Homestead.json
 Homestead.yaml
+
+# NPM / Yarn
 npm-debug.log
 yarn-error.log
+
+# IDEs
 /.idea
 /.vscode
+
+# Databases
 *.sql
 *.sqlite
 *.sqlite-journal
@@ -28,15 +54,16 @@ yarn-error.log
 Thumbs.db
 desktop.ini
 
-# Compiled assets (uncomment if not needed in repo)
+# Compiled assets (keep if needed)
 # /public/css
 # /public/js
 # /public/mix-manifest.json
 
-# Framework storage
+# Framework storage (cache/session only)
 storage/framework/cache/data/*
 storage/framework/sessions/*
 storage/framework/views/*
 storage/framework/testing/*
+
+# Build output
 /public/build
-/.phpunit.cache
