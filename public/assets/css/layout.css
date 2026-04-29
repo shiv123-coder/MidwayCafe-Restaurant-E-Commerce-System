@@ -1,0 +1,760 @@
+:root{
+    --primary:#ff6b00;
+    --primary-dark:#e45800;
+    --accent:#118b50;
+    --text:#1f2937;
+    --muted:#6b7280;
+    --bg:#f8f9fb;
+    --white:#ffffff;
+    --border:#eceff3;
+    --shadow:0 10px 30px rgba(0,0,0,0.08);
+    --radius:18px;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+a{
+    text-decoration:none !important;
+}
+
+.top-strip{
+    background:linear-gradient(90deg,#fff3e8,#eefaf3);
+    border-bottom:1px solid var(--border);
+    font-size:13px;
+    color:var(--text);
+}
+
+.top-strip .strip-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    padding:8px 0;
+    flex-wrap:wrap;
+}
+
+.top-strip .offer-text{
+    font-weight:600;
+    color:var(--primary-dark);
+}
+
+.top-strip .support-links{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.top-strip .support-links a{
+    color:var(--muted);
+    font-weight:500;
+}
+
+.site-header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(10px);
+    box-shadow:0 4px 20px rgba(0,0,0,0.04);
+}
+
+.main-navbar{
+    padding:14px 0;
+}
+
+.navbar-flex{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+}
+
+.brand-box{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    min-width:220px;
+}
+
+.brand-box img{
+    width:62px;
+    height:auto;
+    object-fit:contain;
+}
+
+.brand-meta h1{
+    font-size:20px;
+    margin:0;
+    font-weight:800;
+    color:var(--text);
+    line-height:1.1;
+}
+
+.brand-meta p{
+    margin:2px 0 0;
+    font-size:12px;
+    color:var(--muted);
+}
+
+.search-wrapper{
+    flex:1;
+    max-width:520px;
+    position:relative;
+}
+
+.search-wrapper input{
+    width:100%;
+    border:none;
+    outline:none;
+    background:#f3f5f8;
+    border-radius:999px;
+    padding:14px 18px 14px 48px;
+    font-size:14px;
+    box-shadow:inset 0 0 0 1px transparent;
+    transition:0.25s ease;
+}
+
+.search-wrapper input:focus{
+    background:#fff;
+    box-shadow:0 0 0 2px rgba(255,107,0,0.18);
+}
+
+.search-wrapper i{
+    position:absolute;
+    left:18px;
+    top:50%;
+    transform:translateY(-50%);
+    color:var(--muted);
+    font-size:15px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:0;
+    padding:0;
+    list-style:none;
+    flex-wrap:wrap;
+}
+
+.nav-links li a{
+    color:var(--text);
+    font-size:14px;
+    font-weight:600;
+    padding:10px 12px;
+    border-radius:10px;
+    transition:0.25s ease;
+}
+
+.nav-links li a:hover{
+    background:#fff3eb;
+    color:var(--primary-dark);
+}
+
+.nav-cta{
+    background:var(--primary);
+    color:#fff !important;
+    border-radius:999px !important;
+    padding:11px 18px !important;
+    box-shadow:0 8px 18px rgba(255,107,0,0.18);
+}
+
+.cart-link{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    background:#fff3eb;
+    color:var(--primary-dark) !important;
+    font-size:18px;
+}
+
+.cart-badge{
+    position:absolute;
+    top:-6px;
+    right:-5px;
+    min-width:22px;
+    height:22px;
+    padding:0 6px;
+    border-radius:999px;
+    background:#e11d48;
+    color:#fff;
+    font-size:11px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:2px solid #fff;
+}
+
+.auth-links{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.auth-links a{
+    font-weight:600;
+    font-size:14px;
+}
+
+.btn-outline-custom{
+    display:inline-block;
+    padding:10px 16px;
+    border:1px solid #ffd8bf;
+    color:var(--primary-dark) !important;
+    border-radius:999px;
+    background:#fff;
+}
+
+.btn-solid-custom{
+    display:inline-block;
+    padding:10px 16px;
+    border-radius:999px;
+    background:linear-gradient(135deg,var(--primary),#ff8743);
+    color:#fff !important;
+    box-shadow:0 8px 18px rgba(255,107,0,0.18);
+}
+
+.page-shell{
+    min-height:70vh;
+    padding:28px 0 40px;
+}
+
+.trust-strip{
+    margin-top:14px;
+    margin-bottom:26px;
+}
+
+.trust-card{
+    background:#fff;
+    border-radius:16px;
+    box-shadow:var(--shadow);
+    padding:18px 14px;
+    text-align:center;
+    height:100%;
+    transition:0.25s ease;
+}
+
+.trust-card:hover{
+    transform:translateY(-4px);
+}
+
+.trust-card img{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+    margin-bottom:10px;
+}
+
+.trust-card h6{
+    margin:0 0 4px;
+    font-size:15px;
+    font-weight:700;
+}
+
+.trust-card p{
+    margin:0;
+    font-size:13px;
+    color:var(--muted);
+}
+
+footer.site-footer{
+    background:#111827;
+    color:#e5e7eb;
+    margin-top:32px;
+    padding-top:40px;
+}
+
+.footer-brand img{
+    width:70px;
+    margin-bottom:10px;
+}
+
+.footer-brand h5{
+    color:#fff;
+    margin:0 0 8px;
+    font-weight:700;
+}
+
+.footer-brand p,
+.footer-links a,
+.footer-bottom p{
+    color:#cfd5dd;
+    font-size:14px;
+}
+
+.footer-links h6{
+    color:#fff;
+    font-weight:700;
+    margin-bottom:12px;
+}
+
+.footer-links ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.footer-links ul li{
+    margin-bottom:8px;
+}
+
+.footer-links a:hover{
+    color:#fff;
+}
+
+.social-icons{
+    display:flex;
+    gap:12px;
+    padding:0;
+    margin:14px 0 0;
+    list-style:none;
+}
+
+.social-icons a{
+    width:38px;
+    height:38px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:rgba(255,255,255,0.08);
+    color:#fff;
+    transition:0.25s ease;
+}
+
+.social-icons a:hover{
+    background:var(--primary);
+}
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.08);
+    margin-top:28px;
+    padding:18px 0;
+    text-align:center;
+}
+
+/* =====================================================
+    COMPREHENSIVE DARK MODE — All Pages
+    Applies when <html class="dark-mode"> is active.
+    ===================================================== */
+
+/* ---- GLOBAL / PAGE LEVEL ---- */
+html.dark-mode,
+html.dark-mode body,
+html.dark-mode .page-shell {
+    background-color: #0f172a !important;
+    color: #e2e8f0 !important;
+}
+
+/* ---- TEXT COLORS ---- */
+html.dark-mode h1, html.dark-mode h2, html.dark-mode h3, 
+html.dark-mode h4, html.dark-mode h5, html.dark-mode h6,
+html.dark-mode .h1, html.dark-mode .h2, html.dark-mode .h3, 
+html.dark-mode .h4, html.dark-mode .h5, html.dark-mode .h6 {
+    color: #f1f5f9 !important;
+}
+
+html.dark-mode p, html.dark-mode span:not(.cart-badge):not(.badge), 
+html.dark-mode li, html.dark-mode label, html.dark-mode div {
+    color: #94a3b8;
+}
+
+html.dark-mode strong, html.dark-mode b {
+    color: #cbd5e1 !important;
+}
+
+/* ---- HEADER / NAVBAR ---- */
+html.dark-mode .site-header {
+    background: rgba(15,23,42,0.97) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4) !important;
+}
+html.dark-mode .top-strip {
+    background: linear-gradient(90deg, #1e293b, #0f172a) !important;
+    border-color: rgba(255,255,255,0.06) !important;
+}
+html.dark-mode .top-strip .offer-text { color: #fb923c !important; }
+html.dark-mode .top-strip .support-links a { color: #94a3b8 !important; }
+html.dark-mode .brand-meta h1 { color: #f8fafc !important; }
+html.dark-mode .nav-links li a { color: #e2e8f0 !important; }
+html.dark-mode .nav-links li a:hover { background: rgba(255,107,0,0.12) !important; color: #fb923c !important; }
+
+html.dark-mode .search-wrapper input {
+    background: #1e293b !important;
+    color: #f1f5f9 !important;
+    border-color: rgba(255,255,255,0.12) !important;
+}
+html.dark-mode .search-wrapper input::placeholder { color: #64748b !important; }
+html.dark-mode .btn-outline-custom {
+    background: #1e293b !important;
+    color: #fb923c !important;
+    border-color: rgba(255,107,0,0.3) !important;
+}
+html.dark-mode .btn-solid-custom {
+    background: linear-gradient(135deg,#ff6b00,#ff8743) !important;
+    color: #fff !important;
+}
+
+/* ---- SECTIONS / CONTAINERS ---- */
+html.dark-mode .section-block,
+html.dark-mode .home-hero-wrap,
+html.dark-mode section {
+    background-color: transparent !important;
+}
+
+/* ---- HERO SECTION ---- */
+html.dark-mode .hero-card {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #1a2744 100%) !important;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4) !important;
+}
+html.dark-mode .hero-title { color: #f1f5f9 !important; }
+html.dark-mode .hero-title span { color: #fb923c !important; }
+html.dark-mode .hero-subtitle { color: #94a3b8 !important; }
+html.dark-mode .hero-badge {
+    background: #1e293b !important;
+    color: #fb923c !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+}
+html.dark-mode .hero-trust-pill {
+    background: rgba(30,41,59,0.85) !important;
+    border-color: rgba(255,255,255,0.08) !important;
+    color: #cbd5e1 !important;
+}
+html.dark-mode .hero-btn-secondary {
+    background: #1e293b !important;
+    border-color: rgba(17,139,80,0.3) !important;
+}
+html.dark-mode .hero-floating-box {
+    background: rgba(30,41,59,0.95) !important;
+    box-shadow: 0 14px 32px rgba(0,0,0,0.4) !important;
+}
+html.dark-mode .hero-floating-box h6 { color: #f1f5f9 !important; }
+html.dark-mode .hero-floating-box p { color: #94a3b8 !important; }
+
+/* ---- ABOUT SECTION ---- */
+html.dark-mode .about-card {
+    background: #1e293b !important;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.3) !important;
+}
+html.dark-mode .about-card h3,
+html.dark-mode .about-card h4,
+html.dark-mode .about-card h5 { color: #f1f5f9 !important; }
+html.dark-mode .about-card p,
+html.dark-mode .about-card span { color: #94a3b8 !important; }
+
+/* ---- OFFERS / MENU TABS ---- */
+html.dark-mode .offer-tabs-shell {
+    background: #1e293b !important;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.3) !important;
+}
+html.dark-mode .offer-tab-list li a {
+    background: rgba(255,107,0,0.1) !important;
+    color: #fb923c !important;
+}
+html.dark-mode .offer-tab-list li a:hover,
+html.dark-mode .offer-tab-list li a.active {
+    background: rgba(255,107,0,0.2) !important;
+}
+html.dark-mode .offer-item-card {
+    background: #162032 !important;
+    border-color: rgba(255,255,255,0.07) !important;
+}
+html.dark-mode .offer-item-card:hover {
+    box-shadow: 0 16px 30px rgba(0,0,0,0.4) !important;
+}
+html.dark-mode .offer-item-content h4 { color: #f1f5f9 !important; }
+html.dark-mode .offer-item-content p { color: #94a3b8 !important; }
+html.dark-mode .rating-line .rating-text { color: #94a3b8 !important; }
+
+/* ---- FEATURED MENU / PRODUCT CARDS ---- */
+html.dark-mode .menu-showcase-section {
+    background: linear-gradient(180deg, #0f172a 0%, #1a2130 100%) !important;
+}
+html.dark-mode .featured-product-card {
+    background: #1e293b !important;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.3) !important;
+}
+html.dark-mode .featured-product-title { color: #f1f5f9 !important; }
+html.dark-mode .featured-product-desc { color: #94a3b8 !important; }
+html.dark-mode .featured-badge {
+    background: rgba(30,41,59,0.92) !important;
+    color: #fb923c !important;
+}
+html.dark-mode .qty-box {
+    background: #162032 !important;
+    border-color: rgba(255,255,255,0.12) !important;
+    color: #f1f5f9 !important;
+}
+
+/* ---- CHEF SECTION ---- */
+html.dark-mode .chef-card {
+    background: #1e293b !important;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.3) !important;
+}
+html.dark-mode .chef-body h4 { color: #f1f5f9 !important; }
+html.dark-mode .chef-body span { color: #94a3b8 !important; }
+
+/* ---- RESERVATION / CONTACT SECTION ---- */
+html.dark-mode .contact-side-card,
+html.dark-mode .reservation-form-card {
+    background: #1e293b !important;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.3) !important;
+}
+html.dark-mode .reservation-form-card h4 { color: #f1f5f9 !important; }
+html.dark-mode .contact-highlight-box {
+    background: linear-gradient(135deg,rgba(255,107,0,0.1),rgba(17,139,80,0.08)) !important;
+}
+html.dark-mode .contact-info-card {
+    background: #162032 !important;
+    border-color: rgba(255,255,255,0.07) !important;
+}
+html.dark-mode .contact-info-card h4 { color: #f1f5f9 !important; }
+html.dark-mode .contact-info-card i {
+    background: rgba(255,107,0,0.15) !important;
+}
+html.dark-mode .reservation-form-card input,
+html.dark-mode .reservation-form-card select,
+html.dark-mode .reservation-form-card textarea {
+    background: #162032 !important;
+    border-color: rgba(255,255,255,0.12) !important;
+    color: #f1f5f9 !important;
+}
+html.dark-mode .reservation-form-card input::placeholder,
+html.dark-mode .reservation-form-card textarea::placeholder { color: #64748b !important; }
+html.dark-mode .reservation-form-card input:focus,
+html.dark-mode .reservation-form-card select:focus,
+html.dark-mode .reservation-form-card textarea:focus {
+    border-color: #ff8743 !important;
+    box-shadow: 0 0 0 3px rgba(255,107,0,0.15) !important;
+}
+html.dark-mode .mini-note { color: #64748b !important; }
+
+/* ---- TRUST BADGES ---- */
+html.dark-mode .trust-card {
+    background: #1e293b !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3) !important;
+}
+html.dark-mode .trust-card h6 { color: #f1f5f9 !important; }
+html.dark-mode .trust-card p { color: #94a3b8 !important; }
+
+/* ---- FOOTER ---- */
+html.dark-mode .site-footer {
+    background: linear-gradient(180deg, #0c1526 0%, #0a0f1e 100%) !important;
+}
+html.dark-mode .footer-brand p { color: #94a3b8 !important; }
+html.dark-mode .footer-heading { color: #f1f5f9 !important; }
+html.dark-mode .footer-links a { color: #94a3b8 !important; }
+html.dark-mode .footer-links a:hover { color: #fb923c !important; }
+html.dark-mode .footer-bottom { border-color: rgba(255,255,255,0.06) !important; }
+html.dark-mode .footer-bottom p,
+html.dark-mode .footer-bottom span { color: #64748b !important; }
+
+/* ---- MENU PAGE ---- */
+html.dark-mode .menu-hero {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #1a2744 100%) !important;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.4) !important;
+}
+html.dark-mode .menu-hero::before,
+html.dark-mode .menu-hero::after {
+    background: rgba(255,107,0,0.05) !important;
+}
+html.dark-mode .menu-badge {
+    background: #1e293b !important;
+    color: #fb923c !important;
+}
+html.dark-mode .menu-title { color: #f1f5f9 !important; }
+html.dark-mode .menu-subtitle { color: #94a3b8 !important; }
+
+html.dark-mode .menu-feature-box {
+    background: #1e293b !important;
+    box-shadow: 0 14px 30px rgba(0,0,0,0.3) !important;
+}
+html.dark-mode .menu-feature-box h5 { color: #f1f5f9 !important; }
+html.dark-mode .menu-feature-box p { color: #94a3b8 !important; }
+
+html.dark-mode .menu-filter-bar {
+    background: #1e293b !important;
+    border-color: rgba(255,255,255,0.06) !important;
+}
+html.dark-mode .filter-btn {
+    background: #162032 !important;
+    color: #94a3b8 !important;
+    border-color: rgba(255,255,255,0.08) !important;
+}
+html.dark-mode .filter-btn.active,
+html.dark-mode .filter-btn:hover {
+    background: rgba(255,107,0,0.15) !important;
+    color: #fb923c !important;
+    border-color: rgba(255,107,0,0.3) !important;
+}
+html.dark-mode .menu-card {
+    background: #1e293b !important;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3) !important;
+}
+html.dark-mode .menu-card-body h4,
+html.dark-mode .menu-card-title { color: #f1f5f9 !important; }
+html.dark-mode .menu-card-body p,
+html.dark-mode .menu-card-desc { color: #94a3b8 !important; }
+html.dark-mode .menu-card-price { color: #fb923c !important; }
+
+/* ---- CART / CHECKOUT PAGE ---- */
+html.dark-mode .cart-table-wrap,
+html.dark-mode .cart-summary-box,
+html.dark-mode .checkout-card {
+    background: #1e293b !important;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3) !important;
+}
+html.dark-mode table { color: #e2e8f0 !important; }
+html.dark-mode table thead th {
+    background: #162032 !important;
+    color: #94a3b8 !important;
+    border-color: rgba(255,255,255,0.07) !important;
+}
+html.dark-mode table tbody td {
+    border-color: rgba(255,255,255,0.05) !important;
+    color: #e2e8f0 !important;
+}
+html.dark-mode table tbody tr:hover { background: rgba(255,255,255,0.03) !important; }
+html.dark-mode .table-striped tbody tr:nth-of-type(odd) { background: rgba(255,255,255,0.03) !important; }
+
+/* ---- ALERTS / FLASH MESSAGES ---- */
+html.dark-mode .alert-success {
+    background: rgba(17,139,80,0.15) !important;
+    border-color: rgba(17,139,80,0.3) !important;
+    color: #6ee7b7 !important;
+}
+html.dark-mode .alert-danger,
+html.dark-mode .alert-error {
+    background: rgba(239,68,68,0.15) !important;
+    border-color: rgba(239,68,68,0.3) !important;
+    color: #fca5a5 !important;
+}
+html.dark-mode .alert-warning {
+    background: rgba(245,158,11,0.15) !important;
+    border-color: rgba(245,158,11,0.3) !important;
+    color: #fcd34d !important;
+}
+
+/* ---- GLOBAL FORM ELEMENTS ---- */
+html.dark-mode input[type="text"],
+html.dark-mode input[type="email"],
+html.dark-mode input[type="number"],
+html.dark-mode input[type="password"],
+html.dark-mode input[type="tel"],
+html.dark-mode input[type="date"],
+html.dark-mode select,
+html.dark-mode textarea {
+    background: #162032 !important;
+    border-color: rgba(255,255,255,0.12) !important;
+    color: #f1f5f9 !important;
+}
+html.dark-mode input::placeholder,
+html.dark-mode textarea::placeholder { color: #64748b !important; }
+html.dark-mode select option { background: #1e293b; color: #f1f5f9; }
+html.dark-mode .form-control {
+    background: #162032 !important;
+    border-color: rgba(255,255,255,0.12) !important;
+    color: #f1f5f9 !important;
+}
+html.dark-mode .form-group label { color: #cbd5e1 !important; }
+
+/* ---- GENERIC BOOTSTRAP OVERRIDES ---- */
+html.dark-mode .card {
+    background-color: #1e293b !important;
+    border-color: rgba(255,255,255,0.08) !important;
+}
+html.dark-mode .card-body, html.dark-mode .card-header, html.dark-mode .card-footer {
+    color: #e2e8f0 !important;
+}
+html.dark-mode .text-muted { color: #64748b !important; }
+html.dark-mode .bg-white, html.dark-mode .bg-light { background-color: #1e293b !important; }
+html.dark-mode .border, html.dark-mode .border-bottom, html.dark-mode .border-top { 
+    border-color: rgba(255,255,255,0.08) !important; 
+}
+
+/* ---- SMOOTH TRANSITION ---- */
+html, body, .hero-card, .about-card, .offer-tabs-shell,
+.featured-product-card, .chef-card, .contact-side-card,
+.reservation-form-card, .contact-info-card, .trust-card,
+.offer-item-card, .menu-card, .site-header, .site-footer {
+    transition: background-color 0.35s ease, color 0.25s ease,
+                border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #f3f5f8;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    color: #374151;
+}
+.theme-toggle-btn:hover { transform: rotate(20deg); background: #ffe8d4; }
+html.dark-mode .theme-toggle-btn { background: #1e293b; color: #fbbf24; }
+html.dark-mode .theme-toggle-btn:hover { background: rgba(251,191,36,0.15); }
+
+
+
+@media (max-width: 991px){
+    .navbar-flex{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .brand-box{
+        justify-content:center;
+    }
+
+    .search-wrapper{
+        max-width:100%;
+    }
+
+    .nav-links{
+        justify-content:center;
+    }
+
+    .auth-links{
+        justify-content:center;
+    }
+}
+
+@media (max-width: 575px){
+    .brand-meta h1{
+        font-size:18px;
+    }
+
+    .nav-links{
+        gap:8px;
+    }
+
+    .nav-links li a{
+        padding:8px 10px;
+        font-size:13px;
+    }
+
+    .page-shell{
+        padding-top:20px;
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "set NODE_OPTIONS=--openssl-legacy-provider && mix",
+        "watch": "set NODE_OPTIONS=--openssl-legacy-provider && mix watch",
+        "watch-poll": "set NODE_OPTIONS=--openssl-legacy-provider && mix watch -- --watch-options-poll=1000",
+        "hot": "set NODE_OPTIONS=--openssl-legacy-provider && mix watch --hot",
+        "prod": "npm run production",
+        "production": "set NODE_OPTIONS=--openssl-legacy-provider && mix --production"
+    },
+    "devDependencies": {
+        "@tailwindcss/forms": "^0.3.1",
+        "@tailwindcss/typography": "^0.4.0",
+        "alpinejs": "^3.0.6",
+        "axios": "^0.21",
+        "laravel-mix": "^6.0.6",
+        "lodash": "^4.17.19",
+        "postcss": "^8.1.14",
+        "postcss-import": "^14.0.1",
+        "tailwindcss": "^2.2.2"
+    }
+}

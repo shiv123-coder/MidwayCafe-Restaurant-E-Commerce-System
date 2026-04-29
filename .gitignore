@@ -1,0 +1,42 @@
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.*
+!.env.example
+.env.backup
+.env.local
+.env.production
+*.log
+storage/logs/*.log
+.phpunit.result.cache
+docker-compose.override.yml
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/.idea
+/.vscode
+*.sql
+*.sqlite
+*.sqlite-journal
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Compiled assets (uncomment if not needed in repo)
+# /public/css
+# /public/js
+# /public/mix-manifest.json
+
+# Framework storage
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/framework/testing/*
+/public/build
+/.phpunit.cache
