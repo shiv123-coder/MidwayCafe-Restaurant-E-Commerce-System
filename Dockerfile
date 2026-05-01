@@ -73,7 +73,8 @@ EXPOSE 80
 # -----------------------------
 # Start (SAFE VERSION)
 # -----------------------------
-CMD php artisan config:cache && \
-    php artisan route:cache || true && \
-    php artisan migrate --force || true && \
+CMD php artisan config:clear && \
+    php artisan cache:clear && \
+    php artisan migrate --force && \
+    php artisan db:seed --force || true && \
     apache2-foreground
