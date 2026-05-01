@@ -21,7 +21,7 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     zip
 
 # -----------------------------
-# Apache config (IMPORTANT FIX)
+# Apache config
 # -----------------------------
 RUN a2enmod rewrite
 
@@ -36,7 +36,7 @@ ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 
 # -----------------------------
-# Workdir + code
+# App code
 # -----------------------------
 WORKDIR /var/www/html
 COPY . .
@@ -48,22 +48,30 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 # -----------------------------
-# Permissions (CRITICAL)
+# CRITICAL FIX: permissions
 # -----------------------------
-RUN chmod -R 775 storage bootstrap/cache
+RUN mkdir -p storage/logs \
+    && mkdir -p storage/framework/views \
+    && mkdir -p storage/framework/cache \
+    && mkdir -p storage/framework/sessions
+
+RUN touch storage/logs/laravel.log
+
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 775 storage bootstrap/cache
 
 # -----------------------------
-# Storage link (safe)
+# Storage link
 # -----------------------------
 RUN php artisan storage:link || true
 
 # -----------------------------
-# Expose
+# Expose port
 # -----------------------------
 EXPOSE 80
 
 # -----------------------------
-# Runtime start (IMPORTANT FIX)
+# Start (SAFE VERSION)
 # -----------------------------
 CMD php artisan config:cache && \
     php artisan route:cache || true && \
