@@ -1,3 +1,19 @@
+:root {
+    --preloader-bg: radial-gradient(circle at center, #ffffff 0%, #fdf6f0 100%);
+    --preloader-text: #1f2937;
+    --preloader-accent: #ff6b00;
+    --preloader-accent-soft: rgba(255, 107, 0, 0.15);
+    --preloader-glow: rgba(255, 107, 0, 0.08);
+}
+
+.dark-mode {
+    --preloader-bg: radial-gradient(circle at center, #111827 0%, #050506 100%);
+    --preloader-text: #f9fafb;
+    --preloader-accent: #ff6b00;
+    --preloader-accent-soft: rgba(255, 107, 0, 0.25);
+    --preloader-glow: rgba(255, 107, 0, 0.12);
+}
+
 .app-preloader {
     position: fixed;
     inset: 0;
@@ -5,179 +21,163 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    pointer-events: all;
-    opacity: 1;
-    filter: blur(0);
-    transform: scale(1);
+    background: var(--preloader-bg);
     overflow: hidden;
-    transition:
-        opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
-        transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
-        filter 520ms cubic-bezier(0.22, 1, 0.36, 1);
-    font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    transition: 
+        opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 600ms;
+    font-family: 'Outfit', 'Poppins', sans-serif;
 }
 
-.app-preloader::before,
-.app-preloader::after {
-    content: "";
-    position: absolute;
-    inset: -20%;
-    pointer-events: none;
-}
-
-.app-preloader::before {
-    background:
-        radial-gradient(circle at 28% 30%, rgba(80, 56, 196, 0.26), transparent 46%),
-        radial-gradient(circle at 72% 62%, rgba(67, 127, 255, 0.16), transparent 52%),
-        linear-gradient(150deg, #050506 6%, #0d0b18 52%, #0e1530 100%);
-    animation: loaderGlowDrift 10s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
-}
-
-.app-preloader::after {
-    background-image:
-        radial-gradient(rgba(255, 255, 255, 0.06) 0.75px, transparent 0.75px),
-        radial-gradient(rgba(255, 255, 255, 0.035) 0.75px, transparent 0.75px);
-    background-size: 3px 3px, 4px 4px;
-    background-position: 0 0, 1px 2px;
-    opacity: 0.2;
-    mix-blend-mode: soft-light;
-}
-
-.app-preloader__scene {
+.app-preloader__container {
     position: relative;
-    width: min(88vw, 420px);
-    aspect-ratio: 1;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    animation:
-        loaderFloat 4.8s cubic-bezier(0.37, 0, 0.63, 1) infinite,
-        loaderBreathe 4.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-.app-preloader__ring-wrap {
-    position: relative;
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(18px) saturate(145%);
-    -webkit-backdrop-filter: blur(18px) saturate(145%);
-    background: rgba(255, 255, 255, 0.02);
-    box-shadow:
-        inset 0 0 28px rgba(145, 119, 255, 0.08),
-        0 0 42px rgba(123, 91, 255, 0.16);
-}
-
-.app-preloader__ring {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    padding: 3px;
-    background: conic-gradient(
-        from 0deg,
-        rgba(91, 229, 255, 0.92),
-        rgba(126, 108, 255, 0.95),
-        rgba(242, 94, 255, 0.86),
-        rgba(91, 229, 255, 0.92)
-    );
-    animation:
-        loaderRingRotate 3.8s cubic-bezier(0.56, 0.03, 0.42, 0.98) infinite,
-        loaderRingGlow 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-.app-preloader__ring::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: inherit;
-    filter: blur(16px);
-    opacity: 0.35;
-}
-
-.app-preloader__ring-inner {
+    gap: 3rem;
+    z-index: 2;
     width: 100%;
-    height: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+/* Brand Section */
+.app-preloader__brand {
+    text-align: center;
+    animation: preloaderContentFadeIn 0.8s ease-out forwards;
+}
+
+.app-preloader__brand-tag {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    color: var(--preloader-accent);
+    margin-bottom: 2rem;
+    opacity: 0.8;
+}
+
+.app-preloader__logo-wrap {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-preloader__logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    z-index: 2;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+    animation: preloaderLogoPulse 2.5s ease-in-out infinite;
+}
+
+.app-preloader__orbit {
+    position: absolute;
+    inset: -10px;
+    border: 2px solid transparent;
+    border-top-color: var(--preloader-accent);
     border-radius: 50%;
-    background:
-        radial-gradient(circle at 46% 38%, rgba(255, 255, 255, 0.24), transparent 38%),
-        radial-gradient(circle at center, rgba(5, 10, 24, 0.74) 0%, rgba(3, 4, 9, 0.96) 66%, #040406 100%);
+    animation: preloaderOrbit 3s linear infinite;
 }
 
-.app-preloader__core {
-    position: absolute;
-    width: 112px;
-    height: 112px;
-    border-radius: 50%;
-    background:
-        radial-gradient(circle at 40% 30%, rgba(221, 239, 255, 0.94), rgba(118, 133, 255, 0.38) 44%, rgba(21, 17, 47, 0.9) 100%);
-    box-shadow:
-        0 0 24px rgba(107, 159, 255, 0.35),
-        0 0 56px rgba(152, 96, 255, 0.22);
-    animation:
-        loaderCorePulse 2.9s cubic-bezier(0.4, 0, 0.2, 1) infinite,
-        loaderCoreGlow 3.4s cubic-bezier(0.33, 1, 0.68, 1) infinite;
+.app-preloader__orbit--secondary {
+    inset: -20px;
+    border-top-color: transparent;
+    border-bottom-color: var(--preloader-accent-soft);
+    animation: preloaderOrbit 4s linear infinite reverse;
 }
 
-.app-preloader__core::before {
-    content: "";
-    position: absolute;
-    inset: 10px;
-    border-radius: 50%;
-    border: 1px solid rgba(184, 215, 255, 0.24);
-    filter: blur(0.2px);
+.app-preloader__title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--preloader-text);
+    margin: 0;
+    letter-spacing: -0.02em;
 }
 
-.app-preloader__particle-field {
-    position: absolute;
-    inset: -20%;
-    overflow: hidden;
-    pointer-events: none;
+/* Progress Section */
+.app-preloader__status-wrap {
+    width: 100%;
+    max-width: 240px;
+    text-align: center;
+    animation: preloaderContentFadeIn 0.8s ease-out 0.2s forwards;
+    opacity: 0;
 }
 
-.app-preloader__particle {
-    position: absolute;
-    width: 3px;
+.app-preloader__progress-bar {
     height: 3px;
-    border-radius: 50%;
-    background: rgba(220, 236, 255, 0.6);
-    box-shadow: 0 0 12px rgba(132, 175, 255, 0.45);
-    animation: loaderParticle 7.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    width: 100%;
+    background: var(--preloader-accent-soft);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    position: relative;
 }
 
-.app-preloader__particle:nth-child(2) { top: 22%; left: 73%; animation-delay: -1.9s; }
-.app-preloader__particle:nth-child(1) { top: 68%; left: 17%; animation-delay: -4.4s; }
-.app-preloader__particle:nth-child(3) { top: 38%; left: 14%; animation-delay: -3s; }
-.app-preloader__particle:nth-child(4) { top: 76%; left: 77%; animation-delay: -5.7s; }
-.app-preloader__particle:nth-child(5) { top: 14%; left: 48%; animation-delay: -2.3s; }
-.app-preloader__particle:nth-child(6) { top: 56%; left: 54%; animation-delay: -6.4s; }
-
-.app-preloader__status {
+.app-preloader__progress-fill {
     position: absolute;
-    bottom: 52px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.97rem;
-    letter-spacing: 0.04em;
-    font-weight: 400;
-    color: rgba(236, 240, 255, 0.72);
-    white-space: nowrap;
+    left: -100%;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, var(--preloader-accent), transparent);
+    animation: preloaderProgressFill 2s infinite ease-in-out;
+}
+
+.app-preloader__status-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--preloader-text);
+    opacity: 0.6;
 }
 
 .app-preloader__dots {
     display: inline-block;
-    min-width: 1.2em;
+    width: 1.5em;
     text-align: left;
-    color: rgba(236, 240, 255, 0.65);
 }
 
+/* Ambience & Decoration */
+.app-preloader__ambience {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.app-preloader__glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--preloader-glow) 0%, transparent 70%);
+    animation: preloaderGlow 4s ease-in-out infinite;
+}
+
+.app-preloader__spark {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--preloader-accent);
+    border-radius: 50%;
+    opacity: 0;
+    animation: preloaderSparkle 6s linear infinite;
+}
+
+.app-preloader__spark:nth-child(1) { top: 20%; left: 30%; animation-delay: 0s; }
+.app-preloader__spark:nth-child(2) { top: 70%; left: 80%; animation-delay: 2s; }
+.app-preloader__spark:nth-child(3) { top: 40%; left: 15%; animation-delay: 4s; }
+
+/* Transitions */
 .app-preloader--hidden {
     opacity: 0;
-    transform: scale(0.96);
-    filter: blur(10px);
+    visibility: hidden;
     pointer-events: none;
 }
 
@@ -185,80 +185,46 @@ body.preloader-active {
     overflow: hidden;
 }
 
-body.preloader-active > *:not(.app-preloader) {
-    pointer-events: none;
-}
-
-body.preloader-active .preloader-content-target {
-    filter: blur(10px);
-    opacity: 0.86;
-    transform: scale(1.01);
-}
-
-.preloader-content-target {
-    transition:
-        filter 560ms cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 560ms cubic-bezier(0.22, 1, 0.36, 1),
-        transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-body.preloader-finished .preloader-content-target {
-    filter: blur(0);
-    opacity: 1;
-    transform: scale(1);
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .app-preloader,
-    .app-preloader::before,
-    .app-preloader__scene,
-    .app-preloader__ring,
-    .app-preloader__core,
-    .app-preloader__particle,
-    .app-preloader__dots {
-        animation: none !important;
-    }
-}
-
-@keyframes loaderGlowDrift {
-    0% { transform: translate3d(0, 0, 0) scale(1); filter: blur(0px); }
-    50% { transform: translate3d(1.4%, -1.1%, 0) scale(1.02); filter: blur(2px); }
-    100% { transform: translate3d(-1%, 1.3%, 0) scale(1.01); filter: blur(0px); }
-}
-
-@keyframes loaderFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-@keyframes loaderBreathe {
-    0%, 100% { scale: 0.98; }
-    50% { scale: 1.02; }
-}
-
-@keyframes loaderRingRotate {
+/* Keyframes */
+@keyframes preloaderOrbit {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
 
-@keyframes loaderRingGlow {
-    0%, 100% { opacity: 0.88; }
-    50% { opacity: 1; }
+@keyframes preloaderLogoPulse {
+    0%, 100% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.08); opacity: 1; }
 }
 
-@keyframes loaderCorePulse {
-    0%, 100% { transform: scale(0.94); }
-    50% { transform: scale(1.05); }
+@keyframes preloaderProgressFill {
+    0% { left: -100%; }
+    100% { left: 100%; }
 }
 
-@keyframes loaderCoreGlow {
-    0%, 100% { box-shadow: 0 0 24px rgba(107, 159, 255, 0.35), 0 0 56px rgba(152, 96, 255, 0.22); }
-    50% { box-shadow: 0 0 34px rgba(107, 159, 255, 0.5), 0 0 84px rgba(152, 96, 255, 0.34); }
+@keyframes preloaderGlow {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
 }
 
-@keyframes loaderParticle {
-    0%, 100% { transform: translate3d(0, 0, 0); opacity: 0.18; }
-    35% { transform: translate3d(9px, -14px, 0); opacity: 0.58; }
-    70% { transform: translate3d(-7px, -24px, 0); opacity: 0.34; }
+@keyframes preloaderContentFadeIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes preloaderSparkle {
+    0% { transform: scale(0) translateY(0); opacity: 0; }
+    20% { transform: scale(1) translateY(-20px); opacity: 0.6; }
+    40% { transform: scale(0) translateY(-40px); opacity: 0; }
+    100% { transform: scale(0) translateY(-40px); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .app-preloader__orbit,
+    .app-preloader__logo,
+    .app-preloader__progress-fill,
+    .app-preloader__glow,
+    .app-preloader__spark {
+        animation: none !important;
+    }
 }
 
