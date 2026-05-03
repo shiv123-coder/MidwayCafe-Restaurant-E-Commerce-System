@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    @php
+      $enablePreloader = app()->environment('production') && !in_array(request()->getHost(), ['localhost', '127.0.0.1', '::1'], true);
+    @endphp
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,6 +27,9 @@
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{asset('admin/assets//css/style.css')}}">
+    @if($enablePreloader)
+      <link rel="stylesheet" href="{{ asset('assets/css/preloader.css') }}">
+    @endif
     <!-- End layout styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
@@ -203,7 +209,10 @@ h1, h2, h3, h4, h5, h6, p, span, div { color: var(--admin-text); }
 table { width: 100% !important; }
 </style>
   </head>
-  <body>
+  <body data-app-env="{{ app()->environment() }}">
+    @if($enablePreloader)
+      @include('partials.preloader')
+    @endif
     <div class="container-scroller">
 
       <!-- partial:partials/_sidebar.html -->
@@ -555,6 +564,9 @@ table { width: 100% !important; }
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="{{asset('admin/assets//js/dashboard.js')}}"></script>
+    @if($enablePreloader)
+      <script src="{{ asset('assets/js/preloader.js') }}"></script>
+    @endif
 
 
 

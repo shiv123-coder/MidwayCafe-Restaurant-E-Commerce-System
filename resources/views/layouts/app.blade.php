@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    @php
+        $enablePreloader = app()->environment('production') && !in_array(request()->getHost(), ['localhost', '127.0.0.1', '::1'], true);
+    @endphp
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Midway Dine | Fresh Food Delivered Fast</title>
@@ -13,6 +16,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/premium-style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/layout.css') }}">
+    @if($enablePreloader)
+        <link rel="stylesheet" href="{{ asset('assets/css/preloader.css') }}">
+    @endif
     @stack('styles')
 
     <!-- Instant Dark Mode Script to Prevent Flash -->
@@ -22,7 +28,10 @@
         }
     </script>
 </head>
-<body>
+<body data-app-env="{{ app()->environment() }}">
+    @if($enablePreloader)
+        @include('partials.preloader')
+    @endif
 
     @php
         if(Auth::check()){
@@ -204,6 +213,9 @@
     <script src="{{ asset('assets/js/jquery-2.1.0.min.js') }}"></script>
     <script src="{{ asset('assets/js/popper.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    @if($enablePreloader)
+        <script src="{{ asset('assets/js/preloader.js') }}"></script>
+    @endif
 
     <script>
         // Dark / Light Mode with localStorage persistence
