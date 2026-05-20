@@ -1,204 +1,184 @@
-# 🍽️ MidwayCafe — Laravel Restaurant E-Commerce System
+<div align="center">
 
-<p align="center">
-  <b>Full-Stack Restaurant Ordering Platform built with Laravel, PHP, Blade, and PostgreSQL</b>
-</p>
+# 🍽️ MidwayCafe  
+### Laravel Restaurant E-Commerce System
 
-<p align="center">
-  A backend-focused project designed to understand real Laravel application flow, MVC structure,
-  Blade rendering, authentication, database relationships, and payment workflow integration.
-</p>
+<b>PHP • Laravel • Blade • PostgreSQL • Payment Workflow</b>
+
+<br>
+
+<img src="assets/images/restaurant_system_architecture.png" width="820" alt="MidwayCafe System Architecture">
+
+<br><br>
+
+A professional Laravel-based restaurant ordering platform built to understand  
+<b>MVC architecture, Blade rendering, authentication flow, checkout handling, and backend structure.</b>
+
+</div>
 
 ---
 
 ## 📌 Problem Statement
 
-Traditional restaurant workflows often depend on manual ordering, offline reservations, poor order tracking, and scattered admin operations.
+Traditional restaurant operations often face problems such as manual ordering, slow reservation handling, weak order tracking, and scattered admin management.
 
-Many restaurant web applications only implement basic CRUD features, but they do not clearly demonstrate how a real backend system handles authentication, routing, middleware, database relationships, checkout flow, and admin control.
-
-MidwayCafe solves this by providing a structured Laravel-based restaurant commerce system with a clean MVC architecture and server-side Blade rendering.
+Many restaurant web projects only show basic CRUD operations. They do not clearly explain how a real Laravel application handles routing, middleware, controllers, authentication, Blade views, database interaction, and checkout flow.
 
 ---
 
 ## 🎯 Proposed Solution
 
-MidwayCafe is designed as a centralized restaurant e-commerce platform that supports customer ordering, cart management, reservation handling, payment processing, and admin-side management.
+<b>MidwayCafe</b> provides a centralized restaurant commerce system where users can browse menu items, manage cart items, place orders, make reservations, and complete payments through a structured Laravel workflow.
 
-The solution focuses on building a maintainable Laravel application where each layer has a clear responsibility:
-
-- **Routes** handle request entry points
-- **Middleware** protects secure areas
-- **Controllers** manage request logic
-- **Models** interact with the database
-- **Blade views** render dynamic pages
-- **Database tables** store structured business data
+The project is designed to show how a common restaurant domain can be implemented using clean PHP backend logic and Laravel MVC architecture.
 
 ---
 
-## 🖼️ System Architecture
+## 🧠 Why This Structure?
 
-<p align="center">
-  <img src="assets/images/restaurant_system_architecture.png" width="850" alt="MidwayCafe System Architecture">
-</p>
-
----
-
-## 🗄️ Database Schema
-
-<p align="center">
-  <img src="assets/images/restaurant_database_schema.png" width="850" alt="MidwayCafe Database Schema">
-</p>
-
----
-
-## 🧠 Why This Solution Structure?
-
-This structure was selected because Laravel naturally supports scalable web application development through MVC.
-
-The goal was not only to build a restaurant project, but to understand how professional Laravel applications are organized internally.
+<table>
+<tr>
+<td width="50%">
 
 ### Why Laravel?
 
-Laravel was chosen because it provides:
+Laravel was selected because it provides a clean and scalable backend structure with:
 
-- Clean MVC architecture
-- Built-in routing system
-- Middleware support
+- MVC architecture
+- Routing system
+- Middleware protection
 - Eloquent ORM
 - Authentication support
-- Migration-based database management
-- Secure session handling
-- Easy integration with payment services
+- Migration-based database handling
+
+</td>
+<td width="50%">
 
 ### Why Blade?
 
-Blade was used instead of a heavy frontend framework because the project focuses mainly on PHP backend development and Laravel server-side rendering.
+Blade was used because it keeps the frontend tightly connected with Laravel and helps build server-rendered pages without unnecessary frontend complexity.
 
-Blade helps in:
+It improves understanding of:
 
-- Creating reusable layouts
-- Rendering dynamic pages
-- Keeping frontend closely connected with Laravel data
-- Reducing unnecessary frontend complexity
-- Understanding server-rendered application flow
+- Layout inheritance
+- Reusable components
+- Dynamic page rendering
+- Backend-driven UI flow
 
----
-
-## ⚙️ Core Features
-
-- User Authentication
-- Role-Based Authorization
-- Restaurant Menu Management
-- Cart Management
-- Checkout Workflow
-- Order Processing
-- Reservation Management
-- Coupon Handling
-- Rating System
-- Admin Dashboard
-- Payment Gateway Integration
+</td>
+</tr>
+</table>
 
 ---
 
-## 🏗️ Application Architecture
+## ⚙️ Key Features
 
-MidwayCafe follows Laravel’s MVC architecture.
+<table>
+<tr>
+<td>
 
-### Models
+✅ User Authentication  
+✅ Menu Browsing  
+✅ Cart & Checkout  
+✅ Order Management  
 
-Models represent database entities and handle data interaction using Eloquent ORM.
+</td>
+<td>
 
-Examples:
+✅ Reservation Handling  
+✅ Admin Dashboard  
+✅ Role-Based Access  
+✅ Payment Integration  
 
-- User
-- Product
-- Order
-- Cart
-- Reservation
-- Coupon
-- Rating
+</td>
+</tr>
+</table>
 
-### Views
+---
 
-Views are built using Blade templates. They are responsible for rendering dynamic UI pages using data received from controllers.
+## 🏗️ Laravel Application Flow
 
-### Controllers
+```text
+User Request
+    ↓
+Routes
+    ↓
+Middleware
+    ↓
+Controller
+    ↓
+Model / Service Logic
+    ↓
+Blade View
+    ↓
+Response
+````
 
-Controllers process incoming requests, apply business logic, communicate with models, and return appropriate responses.
-
-### Middleware
-
-Middleware is used to protect routes, validate authentication, and control role-based access.
+This flow helped in understanding how Laravel internally processes a request from browser input to final rendered output.
 
 ---
 
 ## 🛠️ Technology Stack
 
-### Backend
-
-- PHP 8
-- Laravel 9
-
-### Frontend
-
-- Blade Template Engine
-- Bootstrap
-- Tailwind CSS
-- JavaScript
-
-### Database
-
-- PostgreSQL
-
-### Authentication
-
-- Laravel Jetstream
-- OTP Verification
-
-### Payment Integration
-
-- bKash
-- SSLCommerz
+<table>
+<tr>
+<td><b>Backend</b></td>
+<td>PHP 8, Laravel 9</td>
+</tr>
+<tr>
+<td><b>Frontend</b></td>
+<td>Blade, Bootstrap, Tailwind CSS, JavaScript</td>
+</tr>
+<tr>
+<td><b>Database</b></td>
+<td>PostgreSQL</td>
+</tr>
+<tr>
+<td><b>Authentication</b></td>
+<td>Laravel Jetstream, OTP Verification</td>
+</tr>
+<tr>
+<td><b>Payments</b></td>
+<td>bKash, SSLCommerz</td>
+</tr>
+</table>
 
 ---
 
 ## 📂 Project Focus
 
-This project mainly focuses on:
+This project focuses mainly on:
 
-- PHP backend development
-- Laravel request lifecycle
-- Blade-based page rendering
-- MVC separation
-- Database relationship handling
-- Authentication and authorization flow
-- Admin and customer workflow separation
-- Payment and checkout flow understanding
+* PHP backend development
+* Laravel MVC implementation
+* Blade-based server-side rendering
+* Authentication and authorization flow
+* Checkout and payment workflow
+* Admin and customer workflow separation
 
 ---
 
 ## 🚀 Setup Instructions
 
-For installation and execution steps, refer to:
-
-- [RUN.md](RUN.md)
+<a href="RUN.md"><b>View Setup Guide</b></a>
 
 ---
 
 ## 📄 Additional Documentation
 
-- [Project Features](Project_Features.md)
+<a href="Project_Features.md"><b>View Project Features</b></a>
 
 ---
+
+<div align="center">
 
 ## 👨‍💻 Author
 
-**Shivshankar Mali**  
-📧 shivashankrmali7@gmail.com
+<b>Shivshankar Mali</b>
+📧 [shivashankrmali7@gmail.com](mailto:shivashankrmali7@gmail.com)
 
----
+<br>
 
-<p align="center">
-  <b>MidwayCafe</b> demonstrates how a common restaurant domain can be engineered with clean Laravel architecture, structured backend logic, and professional PHP development practices.
-</p>
+<b>MidwayCafe</b> demonstrates how a common restaurant domain can be engineered with clean Laravel architecture, structured PHP backend logic, and professional Blade-based development.
+
+</div>
