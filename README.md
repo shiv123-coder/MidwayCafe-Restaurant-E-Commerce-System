@@ -11,8 +11,8 @@
 
 <br><br>
 
-A professional Laravel-based restaurant ordering platform built to understand  
-<b>MVC architecture, Blade rendering, authentication flow, checkout handling, and backend structure.</b>
+A professional Laravel-based restaurant ordering platform focused on understanding  
+<b>MVC architecture, Blade rendering, authentication flow, payment workflow, and scalable backend structure.</b>
 
 </div>
 
@@ -20,17 +20,38 @@ A professional Laravel-based restaurant ordering platform built to understand
 
 ## 📌 Problem Statement
 
-Traditional restaurant operations often face problems such as manual ordering, slow reservation handling, weak order tracking, and scattered admin management.
+Traditional restaurant operations often rely on manual workflows, disconnected ordering systems, slow reservation handling, and inefficient admin management.
 
-Many restaurant web projects only show basic CRUD operations. They do not clearly explain how a real Laravel application handles routing, middleware, controllers, authentication, Blade views, database interaction, and checkout flow.
+Most beginner-level restaurant applications only implement CRUD functionality without focusing on:
+
+- backend architecture,
+- authentication workflow,
+- routing lifecycle,
+- middleware handling,
+- payment processing,
+- and maintainable application structure.
 
 ---
 
 ## 🎯 Proposed Solution
 
-<b>MidwayCafe</b> provides a centralized restaurant commerce system where users can browse menu items, manage cart items, place orders, make reservations, and complete payments through a structured Laravel workflow.
+<b>MidwayCafe</b> provides a centralized restaurant commerce platform where customers can browse menus, manage carts, place orders, complete payments, and track reservations through a structured Laravel workflow.
 
-The project is designed to show how a common restaurant domain can be implemented using clean PHP backend logic and Laravel MVC architecture.
+The project was intentionally designed to focus more on:
+- clean backend engineering,
+- Laravel lifecycle understanding,
+- Blade rendering,
+- and MVC-based application organization.
+
+---
+
+<div align="center">
+
+## 🔐 Authentication & Request Workflow
+
+<img src="assets/images/authentication_authorization_flow.png" width="820" alt="Authentication Workflow">
+
+</div>
 
 ---
 
@@ -42,28 +63,30 @@ The project is designed to show how a common restaurant domain can be implemente
 
 ### Why Laravel?
 
-Laravel was selected because it provides a clean and scalable backend structure with:
+Laravel was selected because it provides:
 
-- MVC architecture
-- Routing system
-- Middleware protection
-- Eloquent ORM
-- Authentication support
-- Migration-based database handling
+- Clean MVC architecture
+- Secure authentication system
+- Middleware-based route protection
+- Structured routing workflow
+- Eloquent ORM support
+- Scalable backend organization
 
 </td>
+
 <td width="50%">
 
 ### Why Blade?
 
-Blade was used because it keeps the frontend tightly connected with Laravel and helps build server-rendered pages without unnecessary frontend complexity.
+Blade was used to deeply understand Laravel’s server-side rendering workflow while keeping the frontend tightly integrated with backend logic.
 
-It improves understanding of:
+It helped in learning:
 
-- Layout inheritance
-- Reusable components
 - Dynamic page rendering
-- Backend-driven UI flow
+- Layout inheritance
+- Reusable UI components
+- Backend-driven rendering flow
+- Request-to-response lifecycle
 
 </td>
 </tr>
@@ -83,6 +106,7 @@ It improves understanding of:
 ✅ Order Management  
 
 </td>
+
 <td>
 
 ✅ Reservation Handling  
@@ -99,22 +123,10 @@ It improves understanding of:
 ## 🏗️ Laravel Application Flow
 
 ```text
-User Request
-    ↓
-Routes
-    ↓
-Middleware
-    ↓
-Controller
-    ↓
-Model / Service Logic
-    ↓
-Blade View
-    ↓
-Response
-````
+User Request → Routes → Middleware → Controller → Model Logic → Blade View → HTTP Response
+```
 
-This flow helped in understanding how Laravel internally processes a request from browser input to final rendered output.
+This project helped in understanding how Laravel internally processes requests from browser input to final rendered output.
 
 ---
 
@@ -125,18 +137,22 @@ This flow helped in understanding how Laravel internally processes a request fro
 <td><b>Backend</b></td>
 <td>PHP 8, Laravel 9</td>
 </tr>
+
 <tr>
 <td><b>Frontend</b></td>
 <td>Blade, Bootstrap, Tailwind CSS, JavaScript</td>
 </tr>
+
 <tr>
 <td><b>Database</b></td>
 <td>PostgreSQL</td>
 </tr>
+
 <tr>
 <td><b>Authentication</b></td>
 <td>Laravel Jetstream, OTP Verification</td>
 </tr>
+
 <tr>
 <td><b>Payments</b></td>
 <td>bKash, SSLCommerz</td>
@@ -147,14 +163,14 @@ This flow helped in understanding how Laravel internally processes a request fro
 
 ## 📂 Project Focus
 
-This project focuses mainly on:
+This project mainly focuses on:
 
 * PHP backend development
 * Laravel MVC implementation
 * Blade-based server-side rendering
-* Authentication and authorization flow
-* Checkout and payment workflow
-* Admin and customer workflow separation
+* Authentication & authorization workflow
+* Payment and checkout handling
+* Structured Laravel architecture
 
 ---
 
@@ -177,8 +193,8 @@ This project focuses mainly on:
 <b>Shivshankar Mali</b>
 📧 [shivashankrmali7@gmail.com](mailto:shivashankrmali7@gmail.com)
 
-<br>
+<br><br>
 
-<b>MidwayCafe</b> demonstrates how a common restaurant domain can be engineered with clean Laravel architecture, structured PHP backend logic, and professional Blade-based development.
+<b>MidwayCafe</b> demonstrates how a common restaurant domain can be engineered using structured Laravel architecture, professional PHP backend practices, and clean Blade-based rendering workflows.
 
 </div>
