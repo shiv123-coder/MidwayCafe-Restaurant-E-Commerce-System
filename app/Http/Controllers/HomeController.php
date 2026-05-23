@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
 use PDF;
 
@@ -15,29 +16,43 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $menu = \App\Models\Product::withAvg('ratings as avg_rating', 'star_value')
-            ->where('category', 'regular')
-            ->limit(10)
-            ->get();
+        $menu = Cache::remember('home_menu', 3600, function () {
+            return \App\Models\Product::withAvg('ratings as avg_rating', 'star_value')
+                ->where('category', 'regular')
+                ->limit(10)
+                ->get();
+        });
 
-        $breakfast = \App\Models\Product::withAvg('ratings as avg_rating', 'star_value')
-            ->where('session', 0)
-            ->limit(6)
-            ->get();
+        $breakfast = Cache::remember('home_breakfast', 3600, function () {
+            return \App\Models\Product::withAvg('ratings as avg_rating', 'star_value')
+                ->where('session', 0)
+                ->limit(6)
+                ->get();
+        });
 
-        $lunch = \App\Models\Product::withAvg('ratings as avg_rating', 'star_value')
-            ->where('session', 1)
-            ->limit(6)
-            ->get();
+        $lunch = Cache::remember('home_lunch', 3600, function () {
+            return \App\Models\Product::withAvg('ratings as avg_rating', 'star_value')
+                ->where('session', 1)
+                ->limit(6)
+                ->get();
+        });
 
-        $dinner = \App\Models\Product::withAvg('ratings as avg_rating', 'star_value')
-            ->where('session', 2)
-            ->limit(6)
-            ->get();
+        $dinner = Cache::remember('home_dinner', 3600, function () {
+            return \App\Models\Product::withAvg('ratings as avg_rating', 'star_value')
+                ->where('session', 2)
+                ->limit(6)
+                ->get();
+        });
 
-        $chefs = DB::table('chefs')->limit(6)->get();
-        $about_us = DB::table('about_us')->limit(1)->get();
-        $banners = DB::table('banners')->limit(5)->get();
+        $chefs = Cache::remember('home_chefs', 3600, function () {
+            return DB::table('chefs')->limit(6)->get();
+        });
+        $about_us = Cache::remember('home_about_us', 3600, function () {
+            return DB::table('about_us')->limit(1)->get();
+        });
+        $banners = Cache::remember('home_banners', 3600, function () {
+            return DB::table('banners')->limit(5)->get();
+        });
 
         $cart_amount = Auth::check()
             ? DB::table('carts')
@@ -256,10 +271,11 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('query');
+        $escapedQuery = addcslashes($query, '%_');
 
         $products = \App\Models\Product::withAvg('ratings as avg_rating', 'star_value')
-            ->where('name', 'ILIKE', "%{$query}%")
-            ->orWhere('description', 'ILIKE', "%{$query}%")
+            ->where('name', 'ILIKE', "%{$escapedQuery}%")
+            ->orWhere('description', 'ILIKE', "%{$escapedQuery}%")
             ->get();
 
         return view('pages.search', compact('products', 'query'));

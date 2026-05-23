@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 
 class CmsController extends Controller
 {
@@ -26,6 +27,7 @@ class CmsController extends Controller
         $imagePath = $request->file('image')->store('images', 'public');
 
         DB::table('banners')->insert(['banner' => $imagePath]);
+        Cache::forget('home_banners');
         session()->flash('success', 'Banner added successfully!');
         return back();
     }
@@ -33,6 +35,7 @@ class CmsController extends Controller
     public function destroy_banner($id)
     {
         DB::table('banners')->where('id', $id)->delete();
+        Cache::forget('home_banners');
         session()->flash('success', 'Banner deleted successfully!');
         return back();
     }
@@ -123,6 +126,7 @@ class CmsController extends Controller
             'phone' => $request->phone,
             'email' => $request->email,
         ]);
+        Cache::forget('home_about_us');
         session()->flash('success', 'Customization updated successfully!');
         return back();
     }

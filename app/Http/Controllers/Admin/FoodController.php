@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 
 class FoodController extends Controller
 {
@@ -59,6 +60,11 @@ class FoodController extends Controller
             'image' => $imagePath,
         ]);
 
+        Cache::forget('home_menu');
+        Cache::forget('home_breakfast');
+        Cache::forget('home_lunch');
+        Cache::forget('home_dinner');
+
         session()->flash('success', 'Menu added successfully!');
         return back();
     }
@@ -93,6 +99,11 @@ class FoodController extends Controller
 
         DB::table('products')->where('id', $id)->update($data);
 
+        Cache::forget('home_menu');
+        Cache::forget('home_breakfast');
+        Cache::forget('home_lunch');
+        Cache::forget('home_dinner');
+
         session()->flash('success', 'Menu updated successfully!');
         return back();
     }
@@ -100,6 +111,12 @@ class FoodController extends Controller
     public function destroy($id)
     {
         DB::table('products')->where('id', $id)->delete();
+        
+        Cache::forget('home_menu');
+        Cache::forget('home_breakfast');
+        Cache::forget('home_lunch');
+        Cache::forget('home_dinner');
+        
         session()->flash('success', 'Menu deleted successfully!');
         return back();
     }

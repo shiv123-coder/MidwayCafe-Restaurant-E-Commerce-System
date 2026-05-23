@@ -133,32 +133,40 @@ class ShipmentController extends Controller
         $total_extra_charge = DB::table('charges')->sum('price');
         $final_total = $total + $total_extra_charge;
 
-        // 1. Create Order
-        $order = \App\Models\Order::create([
-            'user_id' => Auth::user()->id,
-            'invoice_no' => $invoice,
-            'total_amount' => $final_total,
-            'status' => 'Pending',
-            'pay_method' => 'Cash On Delivery',
-            'shipping_address' => $fullAddress,
-            'delivery_time' => '3 hours',
-            'purchase_date' => date("Y-m-d"),
-            'coupon_id' => $coupon_code,
-        ]);
-
-        // 2. Create Order Items
-        foreach ($carts as $cartItem) {
-            \App\Models\OrderItem::create([
-                'order_id' => $order->id,
-                'product_id' => $cartItem->product_id,
-                'price' => $cartItem->price,
-                'quantity' => $cartItem->quantity,
-                'subtotal' => $cartItem->subtotal,
+        DB::beginTransaction();
+        try {
+            // 1. Create Order
+            $order = \App\Models\Order::create([
+                'user_id' => Auth::user()->id,
+                'invoice_no' => $invoice,
+                'total_amount' => $final_total,
+                'status' => 'Pending',
+                'pay_method' => 'Cash On Delivery',
+                'shipping_address' => $fullAddress,
+                'delivery_time' => '3 hours',
+                'purchase_date' => date("Y-m-d"),
+                'coupon_id' => $coupon_code,
             ]);
-        }
 
-        // 3. Clear Cart
-        DB::table('carts')->where('user_id', Auth::user()->id)->where('product_order', 'no')->delete();
+            // 2. Create Order Items
+            foreach ($carts as $cartItem) {
+                \App\Models\OrderItem::create([
+                    'order_id' => $order->id,
+                    'product_id' => $cartItem->product_id,
+                    'price' => $cartItem->price,
+                    'quantity' => $cartItem->quantity,
+                    'subtotal' => $cartItem->subtotal,
+                ]);
+            }
+
+            // 3. Clear Cart
+            DB::table('carts')->where('user_id', Auth::user()->id)->where('product_order', 'no')->delete();
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            session()->flash('wrong', 'An error occurred while placing your order. Please try again.');
+            return back();
+        }
 
         Session::put('products', $carts);
         Session::put('invoice', $invoice);

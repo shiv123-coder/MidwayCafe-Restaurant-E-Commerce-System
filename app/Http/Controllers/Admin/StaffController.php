@@ -85,7 +85,7 @@ class StaffController extends Controller
     // Delivery Boys
     public function delivery_boy()
     {
-        $delivery_boys = DB::table('users')->where('usertype', '2')->get();
+        $delivery_boys = DB::table('users')->where('usertype', '2')->paginate(20);
         return view('admin.pages.delivery_boys', compact('delivery_boys'));
     }
 
@@ -145,13 +145,13 @@ class StaffController extends Controller
 
     public function user_show()
     {
-        $users = DB::table('users')->where('usertype', '0')->get();
+        $users = DB::table('users')->where('usertype', '0')->paginate(20);
         return view('admin.pages.users', compact('users'));
     }
 
     public function admin_show()
     {
-        $admins = DB::table('users')->where('usertype', '1')->orWhere('usertype', '3')->get();
+        $admins = DB::table('users')->where('usertype', '1')->orWhere('usertype', '3')->paginate(20);
         return view('admin.pages.admins', compact('admins'));
     }
 
