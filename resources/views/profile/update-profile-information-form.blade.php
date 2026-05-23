@@ -28,7 +28,7 @@
 
                 <!-- Current Profile Photo -->
                 <div class="mt-2" x-show="!photoPreview">
-                    <img src="{{ $this->user->profile_photo_url ?? asset('images/admin_img.jpeg') }}" 
+                    <img src="{{ $this->user->profile_photo_url ?? asset('storage/images/admin.jpeg') }}" 
                         alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">
                 </div>
 
