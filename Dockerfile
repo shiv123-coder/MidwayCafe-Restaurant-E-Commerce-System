@@ -26,6 +26,7 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 RUN a2enmod rewrite
 
 RUN echo "<Directory /var/www/html/public>\n\
+    Options FollowSymLinks\n\
     AllowOverride All\n\
     Require all granted\n\
     </Directory>" > /etc/apache2/conf-available/laravel.conf \
@@ -63,7 +64,7 @@ RUN chown -R www-data:www-data /var/www/html \
 # -----------------------------
 # Storage link
 # -----------------------------
-RUN rm -rf public/storage && php artisan storage:link || true
+RUN rm -rf public/storage && php artisan storage:link
 
 # -----------------------------
 # Expose port
