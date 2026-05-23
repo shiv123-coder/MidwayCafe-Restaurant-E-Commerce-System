@@ -224,7 +224,7 @@ table { width: 100% !important; }
         @if(Auth::user()->usertype == 2)
           <a class="sidebar-brand brand-logo" href="/redirects" style="color:white;text-decoration:none;">User Panel</a>
         @endif
-          <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="{{asset('admin/assets//images/logo-mini.svg')}}" alt="logo" /></a>
+          <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="{{asset('storage/images/logo.png')}}" alt="logo" style="width:30px;height:auto;" /></a>
         </div>
         <ul class="nav">
           <li class="nav-item profile">
@@ -433,7 +433,7 @@ table { width: 100% !important; }
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
           <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo-mini" href="/redirects"><img src="{{asset('admin/assets/images/logo-mini.svg')}}" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini" href="/redirects"><img src="{{asset('storage/images/logo.png')}}" alt="logo" style="width:30px;height:auto;" /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-center">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
