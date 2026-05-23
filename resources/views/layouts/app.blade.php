@@ -9,7 +9,7 @@
     <title>Midway Dine | Fresh Food Delivered Fast</title>
     <meta name="description" content="Order delicious meals online with Midway Dine. Fast delivery, easy checkout, and trusted service.">
 
-    <link rel="shortcut icon" type="image/x-icon" href="{{ Storage::url('images/short.jpg') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('storage/images/short.jpg') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
@@ -65,17 +65,20 @@
                 <div class="navbar-flex">
 
                     <a href="{{ url('home') }}" class="brand-box">
-                        <img src="{{ Storage::url('images/logo.png') }}" alt="Midway Dine">
+                        <img src="{{ asset('storage/images/logo.png') }}" onerror="this.src='https://ui-avatars.com/api/?name=MD&background=ff6b00&color=fff&size=64&rounded=true'" alt="Midway Dine">
                         <div class="brand-meta">
                             <h1>Midway Dine</h1>
                             <p>Taste India, delivered fresh</p>
                         </div>
                     </a>
 
-                    <form action="{{ url('/search') }}" method="GET" class="search-wrapper">
-                        <i class="fa fa-search"></i>
-                        <input type="text" name="query" placeholder="Search for biryani, pizza, burgers, combos..." value="{{ request('query') }}">
-                    </form>
+                    <div class="search-container">
+                        <form action="{{ url('/search') }}" method="GET" class="search-wrapper">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" name="query" placeholder="Search biryani, pizza, combos..." value="{{ request('query') }}" aria-label="Search">
+                            <button type="submit" class="search-btn"><i class="fas fa-arrow-right"></i></button>
+                        </form>
+                    </div>
 
                     <ul class="nav-links">
                         <li><a href="{{ url('/') }}">Home</a></li>
@@ -87,7 +90,7 @@
 
                     <div class="auth-links">
                         <a href="{{ url('/cart') }}" class="cart-link" aria-label="Cart">
-                            <i class="fa fa-shopping-cart"></i>
+                            <i class="fas fa-shopping-cart"></i>
                             <span class="cart-badge">{{ $cart_amount }}</span>
                         </a>
 
@@ -124,21 +127,21 @@
             <div class="row">
                 <div class="col-md-4 mb-3">
                     <div class="trust-card">
-                        <img src="{{ Storage::url('images/delivery.png') }}" alt="Fast Delivery">
+                        <img src="{{ asset('storage/images/delivery.png') }}" onerror="this.src='https://ui-avatars.com/api/?name=D&background=fff3eb&color=ff6b00'" alt="Fast Delivery">
                         <h6>Fast Delivery</h6>
                         <p>Quick doorstep delivery for your favourite meals.</p>
                     </div>
                 </div>
                 <div class="col-md-4 mb-3">
                     <div class="trust-card">
-                        <img src="{{ Storage::url('images/cod.png') }}" alt="Cash on Delivery">
+                        <img src="{{ asset('storage/images/cod.png') }}" onerror="this.src='https://ui-avatars.com/api/?name=C&background=fff3eb&color=ff6b00'" alt="Cash on Delivery">
                         <h6>Cash on Delivery</h6>
                         <p>Flexible payment options for a trusted ordering experience.</p>
                     </div>
                 </div>
                 <div class="col-md-4 mb-3">
                     <div class="trust-card">
-                        <img src="{{ Storage::url('images/order.png') }}" alt="Easy Ordering">
+                        <img src="{{ asset('storage/images/order.png') }}" onerror="this.src='https://ui-avatars.com/api/?name=O&background=fff3eb&color=ff6b00'" alt="Easy Ordering">
                         <h6>Easy Ordering</h6>
                         <p>Simple steps, smooth checkout, and instant order updates.</p>
                     </div>
@@ -152,7 +155,7 @@
             <div class="row">
                 <div class="col-lg-4 mb-4">
                     <div class="footer-brand">
-                        <img src="{{ Storage::url('images/logo.png') }}" alt="Midway Dine">
+                        <img src="{{ asset('storage/images/logo.png') }}" onerror="this.src='https://ui-avatars.com/api/?name=MD&background=111827&color=fff&size=64&rounded=true'" alt="Midway Dine">
                         <h5>Midway Dine</h5>
                         <p>
                             A clean, modern Indian-style food ordering experience with better browsing,

@@ -4,114 +4,176 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MidwayCafe - Create Account</title>
-    <link rel="shortcut icon" type="image/x-icon" href="{{ Storage::url('images/short.jpg') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('storage/images/short.jpg') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fdf4ff',
+                            100: '#fae8ff',
+                            500: '#d946ef',
+                            600: '#c026d3',
+                            900: '#701a75',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body { font-family:'Outfit',sans-serif; background-color:#0f172a; color:#f8fafc; margin:0; overflow-x:hidden; }
-        .bg-animated { background:linear-gradient(-45deg,#0f172a,#1e293b,#3b0764,#7e22ce); background-size:400% 400%; animation:gradientBG 15s ease infinite; }
-        @keyframes gradientBG { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
-        .glass-card { background:rgba(30,41,59,0.6); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,0.08); box-shadow:0 25px 50px -12px rgba(0,0,0,0.5); border-radius:1.5rem; }
-        .input-group { position:relative; margin-bottom:1.5rem; }
-        .input-group input { width:100%; padding:1rem 3rem 1rem 1.25rem; background:rgba(15,23,42,0.5); border:1px solid rgba(255,255,255,0.1); border-radius:0.75rem; color:white; outline:none; transition:all 0.3s ease; font-size:1rem; box-sizing:border-box; }
-        .input-group input:focus { border-color:#ec4899; box-shadow:0 0 0 4px rgba(236,72,153,0.15); }
-        .input-group label { position:absolute; left:1.25rem; top:50%; transform:translateY(-50%); color:#94a3b8; pointer-events:none; transition:all 0.3s ease; background:transparent; padding:0 0.25rem; }
-        .input-group input:focus~label, .input-group input:not(:placeholder-shown)~label { top:0; font-size:0.85rem; color:#ec4899; background:#1e293b; border-radius:4px; }
-        .eye-toggle { position:absolute; right:1rem; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; color:#94a3b8; padding:0; display:flex; align-items:center; transition:color 0.2s; }
-        .eye-toggle:hover { color:#ec4899; }
-        .btn-primary { background:linear-gradient(135deg,#f472b6,#db2777); transition:all 0.3s ease; }
-        .btn-primary:hover { transform:translateY(-2px); box-shadow:0 10px 25px -5px rgba(219,39,119,0.5); }
-        .image-overlay { background:linear-gradient(to right,rgba(15,23,42,0.8),rgba(15,23,42,0.2)); }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .glass-panel { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); border-left: 1px solid rgba(255, 255, 255, 0.3); }
+        .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
     </style>
 </head>
-<body class="bg-animated min-h-screen flex items-center justify-center p-4 sm:p-6 lg:p-8">
-    <div class="glass-card w-full max-w-6xl mx-auto flex flex-col lg:flex-row overflow-hidden max-h-[95vh] overflow-y-auto lg:overflow-y-hidden">
-        <!-- Left Side: Brand -->
-        <div class="hidden lg:flex w-1/2 relative">
-            <img src="{{ Storage::url('images/about-video-bg.jpg') }}" alt="MidwayCafe" class="absolute inset-0 w-full h-full object-cover" style="filter:hue-rotate(45deg);">
-            <div class="absolute inset-0 image-overlay"></div>
-            <div class="relative z-10 flex flex-col justify-between p-12 h-full">
-                <div>
-                    <h1 class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-rose-400">Join MidwayCafe</h1>
-                    <p class="mt-4 text-lg text-slate-300 max-w-md leading-relaxed">Create your account to unlock exclusive table reservations, faster checkout, and member-only culinary offers.</p>
-                </div>
-                <div class="space-y-4">
-                    <div class="flex items-center space-x-4 glass-card p-4 rounded-xl max-w-sm">
-                        <div class="w-12 h-12 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-400">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-white">Instant Registration</h3>
-                            <p class="text-sm text-slate-400">Start exploring in 60 seconds</p>
-                        </div>
-                    </div>
-                </div>
+<body class="min-h-screen flex text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Left Side: Image & Brand -->
+    <div class="hidden lg:flex lg:w-1/2 relative bg-slate-900 overflow-hidden">
+        <!-- Using a different unsplash image for register robustness -->
+        <img src="{{ asset('storage/images/reservation-bg.jpg') }}" 
+             onerror="this.src='https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1974&auto=format&fit=crop';" 
+             alt="Restaurant Setting" 
+             class="absolute inset-0 w-full h-full object-cover opacity-60 scale-105 transform transition-transform duration-10000 hover:scale-100">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
+        
+        <div class="relative z-10 flex flex-col justify-between p-12 h-full w-full">
+            <div class="fade-in-up">
+                <a href="/" class="inline-block text-3xl font-bold text-white tracking-tight">
+                    Midway<span class="text-brand-500">Cafe</span>.
+                </a>
             </div>
-        </div>
-        <!-- Right Side: Register Form -->
-        <div class="w-full lg:w-1/2 p-8 sm:p-12 lg:p-16 flex flex-col justify-center overflow-y-auto">
-            <div class="text-center lg:text-left mb-8">
-                <img src="{{ Storage::url('images/logo.png') }}" alt="Logo" class="h-16 w-auto mx-auto lg:mx-0 mb-6 lg:hidden">
-                <h2 class="text-3xl font-bold text-white mb-2">Create Account</h2>
-                <p class="text-slate-400">Fill in your details to get started</p>
-            </div>
-            @if(Session::has('wrong'))
-                <div class="mb-4 bg-red-500/10 border border-red-500/20 text-red-400 px-4 py-3 rounded-xl text-sm flex justify-between items-center">
-                    <span><strong>Oops!</strong> {{ Session::get('wrong') }}</span>
-                    <button onclick="this.parentElement.style.display='none';" class="text-red-400 hover:text-red-300 font-bold text-xl">&times;</button>
-                </div>
-            @endif
-            @if(Session::has('success'))
-                <div class="mb-4 bg-green-500/10 border border-green-500/20 text-green-400 px-4 py-3 rounded-xl text-sm flex justify-between items-center">
-                    <span><strong>Success!</strong> {{ Session::get('success') }}</span>
-                    <button onclick="this.parentElement.style.display='none';" class="text-green-400 hover:text-green-300 font-bold text-xl">&times;</button>
-                </div>
-            @endif
-            <x-jet-validation-errors class="mb-4 bg-red-500/10 border border-red-500/20 text-red-400 px-4 py-3 rounded-xl text-sm" />
-            <form method="POST" action="{{ route('register/confirm') }}" class="space-y-4">
-                @csrf
-                <div class="input-group">
-                    <input type="text" id="name" name="name" value="{{ old('name') }}" required autofocus autocomplete="name" placeholder=" ">
-                    <label for="name">Full Name</label>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="input-group">
-                        <input type="email" id="email" name="email" value="{{ old('email') }}" required placeholder=" ">
-                        <label for="email">Email Address</label>
+            
+            <div class="mb-12 fade-in-up delay-200">
+                <h1 class="text-5xl font-bold text-white mb-6 leading-tight">Start Your <br>Culinary Journey.</h1>
+                <p class="text-lg text-slate-300 max-w-md leading-relaxed mb-8">
+                    Create an account to unlock exclusive table reservations, faster checkout, and member-only dining offers.
+                </p>
+                
+                <div class="flex items-center gap-4 text-sm font-medium text-slate-300">
+                    <div class="p-3 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
+                        <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
                     </div>
-                    <div class="input-group">
-                        <input type="number" id="phone" name="phone" value="{{ old('phone') }}" required placeholder=" ">
-                        <label for="phone">Phone Number</label>
-                    </div>
+                    <p>Instant registration. Start exploring in seconds.</p>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="input-group">
-                        <input type="password" id="reg-password" name="password" required autocomplete="new-password" placeholder=" ">
-                        <label for="reg-password">Password</label>
-                        <button type="button" class="eye-toggle" onclick="togglePwd('reg-password')" aria-label="Toggle password visibility">
-                            <svg id="eye-o-reg-password" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-                            <svg id="eye-c-reg-password" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/></svg>
-                        </button>
-                    </div>
-                    <div class="input-group">
-                        <input type="password" id="reg-confirm" name="password_confirmation" required autocomplete="new-password" placeholder=" ">
-                        <label for="reg-confirm">Confirm Password</label>
-                        <button type="button" class="eye-toggle" onclick="togglePwd('reg-confirm')" aria-label="Toggle confirm password visibility">
-                            <svg id="eye-o-reg-confirm" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-                            <svg id="eye-c-reg-confirm" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/></svg>
-                        </button>
-                    </div>
-                </div>
-                <button type="submit" class="btn-primary w-full py-4 rounded-xl text-white font-semibold flex justify-center items-center space-x-2 mt-4">
-                    <span>Create Account</span>
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </button>
-            </form>
-            <div class="mt-8 text-center">
-                <p class="text-slate-400">Already registered? <a href="{{ route('login') }}" class="text-pink-400 hover:text-pink-300 font-semibold transition-colors">Log in instead</a></p>
             </div>
         </div>
     </div>
+
+    <!-- Right Side: Form -->
+    <div class="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12 lg:p-20 bg-white lg:glass-panel relative z-10 overflow-y-auto max-h-screen">
+        <div class="w-full max-w-md fade-in-up delay-100 py-8">
+            
+            <!-- Mobile Brand -->
+            <div class="lg:hidden text-center mb-8">
+                <a href="/" class="inline-block text-3xl font-bold text-slate-900 tracking-tight">
+                    Midway<span class="text-brand-500">Cafe</span>.
+                </a>
+            </div>
+
+            <div class="mb-8 text-center lg:text-left">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2 tracking-tight">Create an account</h2>
+                <p class="text-slate-500">Fill in your details to get started.</p>
+            </div>
+
+            @if(Session::has('wrong'))
+                <div class="mb-6 p-4 rounded-xl bg-red-50 border border-red-100 text-red-600 text-sm font-medium flex justify-between items-center">
+                    <span><strong>Oops!</strong> {{ Session::get('wrong') }}</span>
+                    <button type="button" onclick="this.parentElement.style.display='none';" class="text-red-400 hover:text-red-600 text-lg leading-none">&times;</button>
+                </div>
+            @endif
+            @if(Session::has('success'))
+                <div class="mb-6 p-4 rounded-xl bg-green-50 border border-green-100 text-green-700 text-sm font-medium flex justify-between items-center">
+                    <span><strong>Success!</strong> {{ Session::get('success') }}</span>
+                    <button type="button" onclick="this.parentElement.style.display='none';" class="text-green-400 hover:text-green-600 text-lg leading-none">&times;</button>
+                </div>
+            @endif
+
+            <x-jet-validation-errors class="mb-6 p-4 rounded-xl bg-red-50 border border-red-100 text-red-600 text-sm font-medium" />
+
+            <form method="POST" action="{{ route('register/confirm') }}" class="space-y-5">
+                @csrf
+                
+                <div>
+                    <label for="name" class="block text-sm font-semibold text-slate-700 mb-1.5">Full Name</label>
+                    <input type="text" id="name" name="name" value="{{ old('name') }}" required autofocus autocomplete="name" 
+                        class="block w-full px-4 py-2.5 border border-slate-200 rounded-xl text-slate-900 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white focus:border-transparent transition-all sm:text-sm" placeholder="John Doe">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                        <label for="email" class="block text-sm font-semibold text-slate-700 mb-1.5">Email</label>
+                        <input type="email" id="email" name="email" value="{{ old('email') }}" required 
+                            class="block w-full px-4 py-2.5 border border-slate-200 rounded-xl text-slate-900 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white focus:border-transparent transition-all sm:text-sm" placeholder="you@example.com">
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-semibold text-slate-700 mb-1.5">Phone Number</label>
+                        <input type="number" id="phone" name="phone" value="{{ old('phone') }}" required 
+                            class="block w-full px-4 py-2.5 border border-slate-200 rounded-xl text-slate-900 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white focus:border-transparent transition-all sm:text-sm" placeholder="1234567890">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                        <label for="reg-password" class="block text-sm font-semibold text-slate-700 mb-1.5">Password</label>
+                        <div class="relative">
+                            <input type="password" id="reg-password" name="password" required autocomplete="new-password" 
+                                class="block w-full pl-4 pr-10 py-2.5 border border-slate-200 rounded-xl text-slate-900 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white focus:border-transparent transition-all sm:text-sm" placeholder="••••••••">
+                            <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-brand-500 transition-colors" onclick="togglePwd('reg-password')">
+                                <svg id="eye-o-reg-password" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                                <svg id="eye-c-reg-password" class="h-4 w-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="reg-confirm" class="block text-sm font-semibold text-slate-700 mb-1.5">Confirm</label>
+                        <div class="relative">
+                            <input type="password" id="reg-confirm" name="password_confirmation" required autocomplete="new-password" 
+                                class="block w-full pl-4 pr-10 py-2.5 border border-slate-200 rounded-xl text-slate-900 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white focus:border-transparent transition-all sm:text-sm" placeholder="••••••••">
+                            <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-brand-500 transition-colors" onclick="togglePwd('reg-confirm')">
+                                <svg id="eye-o-reg-confirm" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                                <svg id="eye-c-reg-confirm" class="h-4 w-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-semibold text-white bg-brand-600 hover:bg-brand-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500 transition-all active:scale-[0.98]">
+                        Create Account
+                    </button>
+                </div>
+            </form>
+
+            <div class="mt-8 text-center text-sm">
+                <p class="text-slate-500">
+                    Already registered? 
+                    <a href="{{ route('login') }}" class="font-semibold text-brand-600 hover:text-brand-500 transition-colors">Log in instead</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
     <script>
         function togglePwd(id) {
             var el = document.getElementById(id);

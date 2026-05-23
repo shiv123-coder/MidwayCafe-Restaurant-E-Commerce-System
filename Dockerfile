@@ -63,7 +63,7 @@ RUN chown -R www-data:www-data /var/www/html \
 # -----------------------------
 # Storage link
 # -----------------------------
-RUN php artisan storage:link || true
+RUN rm -rf public/storage && php artisan storage:link || true
 
 # -----------------------------
 # Expose port

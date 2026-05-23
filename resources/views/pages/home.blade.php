@@ -10,40 +10,41 @@
 @endphp
 
 <div class="home-hero-wrap">
-    <div class="hero-card">
-        <div class="row no-gutters align-items-stretch">
+    <div class="hero-card premium-hero-bg">
+        <div class="hero-overlay"></div>
+        <div class="row no-gutters align-items-stretch position-relative" style="z-index: 2;">
             <div class="col-lg-5">
-                <div class="hero-left">
-                    <div class="hero-badge">
-                        <i class="fa fa-star"></i>
+                <div class="hero-left glassmorphism-card">
+                    <div class="hero-badge dark-badge">
+                        <i class="fas fa-star text-warning"></i>
                         Loved by foodies for fresh taste & quick service
                     </div>
 
-                    <h1 class="hero-title">
+                    <h1 class="hero-title text-white">
                         Craving something
-                        <span>delicious</span>
+                        <span class="text-primary-accent">delicious</span>
                         today?
                     </h1>
 
-                    <p class="hero-subtitle">
+                    <p class="hero-subtitle text-light-muted">
                         Discover rich flavours, quick bites, filling combos, sweet treats, and
                         comforting meals — all crafted for a modern Indian food experience that feels
                         fresh, premium, and easy to order.
                     </p>
 
                     <div class="hero-cta-group">
-                        <a href="{{ route('menu') }}" class="hero-btn-primary">
+                        <a href="{{ route('menu') }}" class="hero-btn-primary shadow-glow">
                             Explore Full Menu
                         </a>
-                        <a href="#reservation" class="hero-btn-secondary">
+                        <a href="#reservation" class="hero-btn-secondary glass-btn">
                             Reserve a Table
                         </a>
                     </div>
 
                     <div class="hero-trust-row">
-                        <div class="hero-trust-pill">Fast Delivery</div>
-                        <div class="hero-trust-pill">Fresh Ingredients</div>
-                        <div class="hero-trust-pill">Easy Online Ordering</div>
+                        <div class="hero-trust-pill glass-pill"><i class="fas fa-motorcycle"></i> Fast Delivery</div>
+                        <div class="hero-trust-pill glass-pill"><i class="fas fa-leaf"></i> Fresh Ingredients</div>
+                        <div class="hero-trust-pill glass-pill"><i class="fas fa-mobile-alt"></i> Easy Ordering</div>
                     </div>
                 </div>
             </div>
@@ -51,20 +52,20 @@
             <div class="col-lg-7">
                 <div class="hero-slider-wrap">
                     <div class="main-banner header-text">
-                        <div class="Modern-Slider">
+                        <div class="Modern-Slider rounded-modern-slider">
                             @foreach($banners as $banner)
                                 <div class="item">
                                     <div class="img-fill">
-                                        <img src="{{ Storage::url($banner->banner) }}" alt="Banner">
+                                        <img src="{{ Storage::url($banner->banner) }}" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop'" alt="Banner">
                                     </div>
                                 </div>
                             @endforeach
                         </div>
                     </div>
 
-                    <div class="hero-floating-box">
-                        <h6>Today’s Popular Picks</h6>
-                        <p>
+                    <div class="hero-floating-box glass-float">
+                        <h6 class="text-white">Today’s Popular Picks</h6>
+                        <p class="text-light-muted">
                             Browse chef-crafted dishes, combo meals, and best-rated specials curated
                             for breakfast, lunch, and dinner.
                         </p>
@@ -89,13 +90,13 @@
 
                         <div class="row about-gallery">
                             <div class="col-4">
-                                <img src="{{ Storage::url($a_us->image1) }}" alt="About Image 1">
+                                <img src="{{ asset('storage/' . $a_us->image1) }}" onerror="this.src='https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop'" alt="About Image 1">
                             </div>
                             <div class="col-4">
-                                <img src="{{ Storage::url($a_us->image2) }}" alt="About Image 2">
+                                <img src="{{ asset('storage/' . $a_us->image2) }}" onerror="this.src='https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=2070&auto=format&fit=crop'" alt="About Image 2">
                             </div>
                             <div class="col-4">
-                                <img src="{{ Storage::url($a_us->image3) }}" alt="About Image 3">
+                                <img src="{{ asset('storage/' . $a_us->image3) }}" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop'" alt="About Image 3">
                             </div>
                         </div>
                     </div>
@@ -103,7 +104,7 @@
 
                 <div class="col-lg-6">
                     <div class="video-thumb-wrap">
-                        <img src="{{ Storage::url('images/about-video-bg.jpg') }}" alt="Video Thumbnail">
+                        <img src="{{ asset('storage/images/about-video-bg.jpg') }}" onerror="this.src='https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1974&auto=format&fit=crop'" alt="Video Thumbnail">
                         <a rel="nofollow" href="{{ $a_us->youtube_link }}" target="_blank" class="play-btn-modern">
                             <i class="fa fa-play"></i>
                         </a>
@@ -131,19 +132,19 @@
                     <ul class="offer-tab-list">
                         <li>
                             <a href="#tabs-1">
-                                <img src="{{ Storage::url('images/tab-icon-01.png') }}" alt="Breakfast">
+                                <i class="fas fa-coffee" style="font-size: 20px;"></i>
                                 Breakfast
                             </a>
                         </li>
                         <li>
                             <a href="#tabs-2">
-                                <img src="{{ Storage::url('images/tab-icon-02.png') }}" alt="Lunch">
+                                <i class="fas fa-hamburger" style="font-size: 20px;"></i>
                                 Lunch
                             </a>
                         </li>
                         <li>
                             <a href="#tabs-3">
-                                <img src="{{ Storage::url('images/tab-icon-03.png') }}" alt="Dinner">
+                                <i class="fas fa-utensils" style="font-size: 20px;"></i>
                                 Dinner
                             </a>
                         </li>
@@ -162,7 +163,7 @@
 
                                 <div class="offer-item-card">
                                     <div class="offer-item-image">
-                                        <img src="{{ Storage::url($item->image) }}" alt="{{ $item->name }}">
+                                        <img src="{{ asset('storage/' . $item->image) }}" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2000&auto=format&fit=crop'" alt="{{ $item->name }}">
                                     </div>
                                     <div class="offer-item-content">
                                         <h4>{{ $item->name }}</h4>
@@ -197,7 +198,7 @@
 
                                 <div class="offer-item-card">
                                     <div class="offer-item-image">
-                                        <img src="{{ Storage::url($item->image) }}" alt="{{ $item->name }}">
+                                        <img src="{{ asset('storage/' . $item->image) }}" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2000&auto=format&fit=crop'" alt="{{ $item->name }}">
                                     </div>
                                     <div class="offer-item-content">
                                         <h4>{{ $item->name }}</h4>
@@ -232,7 +233,7 @@
 
                                 <div class="offer-item-card">
                                     <div class="offer-item-image">
-                                        <img src="{{ Storage::url($item->image) }}" alt="{{ $item->name }}">
+                                        <img src="{{ asset('storage/' . $item->image) }}" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2000&auto=format&fit=crop'" alt="{{ $item->name }}">
                                     </div>
                                     <div class="offer-item-content">
                                         <h4>{{ $item->name }}</h4>
@@ -289,7 +290,7 @@
 
                     <div class="item p-2">
                         <div class="featured-product-card">
-                            <div class="featured-product-image" style="background-image:url('{{ Storage::url($product->image) }}')">
+                            <div class="featured-product-image" style="background-image:url('{{ asset('storage/' . $product->image) }}');">
                                 <div class="featured-badge">Featured Dish</div>
 
                                 @if($product->available != "Stock")
@@ -361,7 +362,7 @@
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="chef-card">
                         <div class="chef-thumb">
-                            <img src="{{ Storage::url($chef->image) }}" alt="{{ $chef->name }}">
+                            <img src="{{ asset('storage/' . $chef->image) }}" onerror="this.src='https://ui-avatars.com/api/?name={{ urlencode($chef->name) }}&background=111827&color=fff&size=512'" alt="{{ $chef->name }}">
 
                             <div class="chef-overlay">
                                 <ul class="chef-socials">
