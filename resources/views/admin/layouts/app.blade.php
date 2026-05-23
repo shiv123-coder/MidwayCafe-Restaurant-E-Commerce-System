@@ -321,7 +321,7 @@ table { width: 100% !important; }
           @endif
 
           <li class="nav-item menu-items">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-icon">
                 <i class="mdi mdi-file-document-box"></i>
               </span>
@@ -341,7 +341,7 @@ table { width: 100% !important; }
           </li>
           <!--
           <li class="nav-item menu-items">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-icon">
                 <i class="mdi mdi-food"></i>
               </span>
@@ -436,7 +436,7 @@ table { width: 100% !important; }
             <a class="navbar-brand brand-logo-mini" href="/redirects"><img src="{{asset('storage/images/logo.png')}}" alt="logo" style="width:30px;height:auto;" /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-center">
-            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
               <span class="mdi mdi-menu"></span>
             </button>
             <ul class="navbar-nav w-100 justify-content-center">
@@ -458,7 +458,7 @@ table { width: 100% !important; }
                 </a>
               </li>
               <li class="nav-item dropdown border-left">
-                <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                   <i class="mdi mdi-email"></i>
                   <span class="count bg-success"></span>
                 </a>
@@ -470,7 +470,7 @@ table { width: 100% !important; }
                 </button>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown" style="padding: 0;">
+                <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown" style="padding: 0;">
                   <div class="navbar-profile d-flex align-items-center">
                     <img class="img-xs rounded-circle"
                         src="{{ Auth::user()->profile_photo_path && file_exists(storage_path('app/public/' . Auth::user()->profile_photo_path))
@@ -511,7 +511,7 @@ table { width: 100% !important; }
                 </div>
               </li>
             </ul>
-            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-bs-toggle="offcanvas">
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
               <span class="mdi mdi-format-line-spacing"></span>
             </button>
           </div>

@@ -60,7 +60,7 @@
                   
                     
                       <button type="submit" class="btn btn-primary me-2">Submit</button>
-                      <button class="btn btn-dark">Cancel</button>
+                      <a href="{{ route('admin.chefs') }}" class="btn btn-dark">Cancel</a>
                     </form>
                   </div>
                 </div>

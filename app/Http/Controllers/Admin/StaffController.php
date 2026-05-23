@@ -28,7 +28,7 @@ class StaffController extends Controller
     {
         $request->validate([
             'image' => 'required|mimes:jpeg,jpg,png',
-            'name' => 'required',
+            'name' => 'required|unique:chefs,name',
             'job' => 'required',
         ]);
 
