@@ -10,7 +10,7 @@
 @endphp
 
 <div class="home-hero-wrap">
-    <div class="hero-card premium-hero-bg">
+    <div class="hero-card premium-hero-bg" style="background: url('{{ asset('storage/images/hero-banner-default.png') }}') center/cover no-repeat;">
         <div class="hero-overlay"></div>
         <div class="row no-gutters align-items-stretch position-relative" style="z-index: 2;">
             <div class="col-lg-5">
