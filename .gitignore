@@ -67,3 +67,6 @@ storage/framework/testing/*
 
 # Build output
 /public/build
+Database_check.txt 
+interview_questions.md 
+interview_questions.pdf 
