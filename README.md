@@ -180,6 +180,13 @@ This project mainly focuses on:
 
 ---
 
+## 🗄️ Database Management
+
+- **Database Host**: Neon PostgreSQL
+- **Dashboard**: [Manage Neon Database](https://console.neon.tech/app/projects/late-water-38226398?database=neondb)
+
+---
+
 ## 📄 Additional Documentation
 
 <a href="Project_Features.md"><b>View Project Features</b></a>
